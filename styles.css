@@ -1,21 +1,26 @@
 body {
-    background-color: grey;
+    background-color: dimgrey;
 }
 
 header {
     background-color: blueviolet;
+    display: flex;
+    margin: 1rem;
 }
 
 #main {
     display: flex;
 }
 .container {
-    background-color: green;
+    background-color: darkgrey;
     width: 10rem;
     height: 10rem;
     margin: 1rem;
+    border-radius: 1rem;
 }
 
 footer {
     background-color: burlywood;
+    text-align: center;
+    margin: 1rem;
 }
