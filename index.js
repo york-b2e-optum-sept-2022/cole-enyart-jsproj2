@@ -36,7 +36,7 @@ async function getDateTime() {
     }
 }
 
-async function getValid() {
+async function checkValid() {
     const text = document.getElementById("json").value;
     const response = await fetch(`http://validate.jsontest.com/?json=${text}`);
     if (response.ok === false) {
@@ -55,8 +55,8 @@ async function getValid() {
     }
 }
 
-async function getMd5() {
-    const text = "example text";
+async function calcMd5() {
+    const text = document.getElementById("md5").value;
     const response = await fetch(`http://md5.jsontest.com/?text=${text}`);
     if (response.ok === false) {
         console.log("Fetch ERROR");
@@ -64,6 +64,12 @@ async function getMd5() {
     }
     const data = await response.json();
     console.log(data);
+    try {
+        md5Calc.innerHTML += `<div>${data.original}<br>${data.md5}</div>`;
+    } catch (error) {
+        console.log("ERROR display");
+        return null;
+    }
 }
 
 async function display(data, data2) {
