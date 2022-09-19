@@ -1,9 +1,14 @@
+* {
+    border-radius: .5em;
+}
+
 body {
     background-color: dimgrey;
+
 }
 
 header {
-    background-color: blueviolet;
+    background-color: lightslategrey;
     display: flex;
     margin: 1em;
 }
@@ -13,9 +18,9 @@ header {
 }
 .container > div{
     background-color: darkgrey;
-    width: auto;
-    height: auto;
+    width: fit-content;
+    height: fit-content;
     margin: .5em;
     padding: 1em;
-    border-radius: 1em;
+
 }

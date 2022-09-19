@@ -30,10 +30,10 @@ async function httpHeaders() {
     }
 
     const data = await response.json();
-    let output = '';
+    let output = "";
     try {
     for (const property in data) {
-        output += `<p>${property}: ${data[property]}</p>`;
+        output += `<p><b>${property}:</b> ${data[property]}</p>`;
     }
 
     headers.innerHTML = output;
