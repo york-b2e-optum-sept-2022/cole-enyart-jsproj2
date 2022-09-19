@@ -1,3 +1,10 @@
+:root {
+    --width: fit-content;
+    --height: fit-content;
+    --margin: .5em;
+    --padding: 1em;
+}
+
 * {
     border-radius: .5em;
 }
@@ -8,9 +15,15 @@ body {
 }
 
 header {
-    background-color: lightslategrey;
     display: flex;
-    margin: 1em;
+}
+
+header > div{
+    background-color: lightslategrey;
+    width: var(--width);
+    height: var(--height);
+    margin: var(--margin);
+    padding: var(--padding);
 }
 
 .container {
@@ -18,9 +31,9 @@ header {
 }
 .container > div{
     background-color: darkgrey;
-    width: fit-content;
-    height: fit-content;
-    margin: .5em;
-    padding: 1em;
+    width: var(--width);
+    height: var(--height);
+    margin: var(--margin);
+    padding: var(--padding);
 
 }

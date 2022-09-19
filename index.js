@@ -13,7 +13,12 @@ async function apiAddress() {
 
     const data = await response.json();
     try {
-        address.innerHTML = `<p>${data.ip}</p>`;
+        let output = "";
+        for (const property in data) {
+            output += `<p><b>${property}:</b> ${data[property]}</p>`;
+        }
+
+        address.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -30,13 +35,13 @@ async function httpHeaders() {
     }
 
     const data = await response.json();
-    let output = "";
     try {
-    for (const property in data) {
-        output += `<p><b>${property}:</b> ${data[property]}</p>`;
-    }
+        let output = "";
+        for (const property in data) {
+            output += `<p><b>${property}:</b> ${data[property]}</p>`;
+        }
 
-    headers.innerHTML = output;
+        headers.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -54,7 +59,12 @@ async function dateTime() {
 
     const data = await response.json();
     try {
-        dateAndTime.innerHTML = `<p>${data.date}<br>${data.time}</p>`;
+        let output = "";
+        for (const property in data) {
+            output += `<p><b>${property}:</b> ${data[property]}</p>`;
+        }
+
+        dateAndTime.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -73,9 +83,12 @@ async function checkValid() {
 
     const data = await response.json();
     try {
-        (data.validate
-            ? jsonCheck.innerHTML = `<p>${data.validate}</p>`
-            : jsonCheck.innerHTML = `<p>${data.validate}<br>${data.error}</p>`);
+        let output = "";
+        for (const property in data) {
+            output += `<p><b>${property}:</b> ${data[property]}</p>`;
+        }
+
+        jsonCheck.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -94,7 +107,12 @@ async function calcMd5() {
 
     const data = await response.json();
     try {
-        md5Calc.innerHTML = `<p>${data.original}<br>${data.md5}</p>`;
+        let output = "";
+        for (const property in data) {
+            output += `<p><b>${property}:</b> ${data[property]}</p>`;
+        }
+
+        md5Calc.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
