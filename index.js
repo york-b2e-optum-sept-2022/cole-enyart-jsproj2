@@ -13,7 +13,7 @@ async function apiAddress() {
 
     const data = await response.json();
     try {
-        address.innerHTML = `<div>${data.ip}</div>`;
+        address.innerHTML = `<p>${data.ip}</p>`;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -30,8 +30,13 @@ async function httpHeaders() {
     }
 
     const data = await response.json();
+    let output = '';
     try {
-        headers.innerHTML = `<div>${JSON.stringify(data)}</div>`;
+    for (const property in data) {
+        output += `<p>${property}: ${data[property]}</p>`;
+    }
+
+    headers.innerHTML = output;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -49,7 +54,7 @@ async function dateTime() {
 
     const data = await response.json();
     try {
-        dateAndTime.innerHTML = `<div>${data.date}${data.time}</div>`;
+        dateAndTime.innerHTML = `<p>${data.date}<br>${data.time}</p>`;
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -69,8 +74,8 @@ async function checkValid() {
     const data = await response.json();
     try {
         (data.validate
-            ? jsonCheck.innerHTML = `<div>${data.validate}</div>`
-            : jsonCheck.innerHTML = `<div>${data.validate}<br>${data.error}</div>`);
+            ? jsonCheck.innerHTML = `<p>${data.validate}</p>`
+            : jsonCheck.innerHTML = `<p>${data.validate}<br>${data.error}</p>`);
     } catch (error) {
         console.log("ERROR display");
         return null;
@@ -89,7 +94,7 @@ async function calcMd5() {
 
     const data = await response.json();
     try {
-        md5Calc.innerHTML = `<div>${data.original}<br>${data.md5}</div>`;
+        md5Calc.innerHTML = `<p>${data.original}<br>${data.md5}</p>`;
     } catch (error) {
         console.log("ERROR display");
         return null;

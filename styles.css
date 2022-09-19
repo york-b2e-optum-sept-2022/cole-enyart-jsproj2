@@ -8,13 +8,14 @@ header {
     margin: 1em;
 }
 
-#main {
+.container {
     display: flex;
 }
 .container > div{
     background-color: darkgrey;
     width: auto;
     height: auto;
-    margin: 1em;
+    margin: .5em;
+    padding: 1em;
     border-radius: 1em;
 }
