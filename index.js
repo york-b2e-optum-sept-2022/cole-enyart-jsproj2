@@ -4,36 +4,58 @@ const dateAndTime = document.getElementById("dateAndTime");
 const jsonCheck = document.getElementById("jsonCheck");
 const md5Calc = document.getElementById("md5Calc");
 
-async function getAddress() {
+async function apiAddress() {
     const response = await fetch("http://ip.jsontest.com/");
-    const response2 = await fetch("http://headers.jsontest.com/");
-
     if (response.ok === false) {
         console.log("Fetch ERROR");
         return null;
     }
+
     const data = await response.json();
-    const data2 = await response2.json();
+    try {
+        address.innerHTML = `<div>${data.ip}</div>`;
+    } catch (error) {
+        console.log("ERROR display");
+        return null;
+    }
 
-    await display((data.ip), JSON.stringify(data2));
-    console.log(data, data2);
-
+    return data;
 }
 
-async function getDateTime() {
+async function httpHeaders() {
+    const response = await fetch("http://headers.jsontest.com/");
+    if (response.ok === false) {
+        console.log("Fetch ERROR");
+        return null;
+    }
+
+    const data = await response.json();
+    try {
+        headers.innerHTML = `<div>${JSON.stringify(data)}</div>`;
+    } catch (error) {
+        console.log("ERROR display");
+        return null;
+    }
+
+    return data;
+}
+
+async function dateTime() {
     const response = await fetch("http://date.jsontest.com");
     if (response.ok === false) {
         console.log("Fetch ERROR");
         return null;
     }
+
     const data = await response.json();
-    console.log(data);
     try {
-        dateAndTime.innerHTML += `${data.date}${data.time}`;
+        dateAndTime.innerHTML = `<div>${data.date}${data.time}</div>`;
     } catch (error) {
         console.log("ERROR display");
         return null;
     }
+
+    return data;
 }
 
 async function checkValid() {
@@ -43,16 +65,18 @@ async function checkValid() {
         console.log("Fetch ERROR");
         return null;
     }
+
     const data = await response.json();
-    console.log(data);
     try {
         (data.validate
-            ? jsonCheck.innerHTML += `<div>${data.validate}</div>`
-            : jsonCheck.innerHTML += `<div>${data.validate}<br>${data.error}</div>`);
+            ? jsonCheck.innerHTML = `<div>${data.validate}</div>`
+            : jsonCheck.innerHTML = `<div>${data.validate}<br>${data.error}</div>`);
     } catch (error) {
         console.log("ERROR display");
         return null;
     }
+
+    return data;
 }
 
 async function calcMd5() {
@@ -62,26 +86,22 @@ async function calcMd5() {
         console.log("Fetch ERROR");
         return null;
     }
+
     const data = await response.json();
-    console.log(data);
     try {
-        md5Calc.innerHTML += `<div>${data.original}<br>${data.md5}</div>`;
+        md5Calc.innerHTML = `<div>${data.original}<br>${data.md5}</div>`;
     } catch (error) {
         console.log("ERROR display");
         return null;
     }
+
+    return data;
 }
 
-async function display(data, data2) {
-    try {
-        address.innerHTML += `${data}`;
-        headers.innerHTML += `${data2}`;
-
-    } catch (error) {
-        console.log("ERROR display");
-        return null;
-    }
+async function start() {
+    await apiAddress();
+    await httpHeaders();
+    setInterval(await dateTime, 1000);
 }
 
-getAddress();
-getDateTime();
+start();

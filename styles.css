@@ -5,22 +5,16 @@ body {
 header {
     background-color: blueviolet;
     display: flex;
-    margin: 1rem;
+    margin: 1em;
 }
 
 #main {
     display: flex;
 }
-.container {
+.container > div{
     background-color: darkgrey;
-    width: 15rem;
-    height: 15rem;
-    margin: 1rem;
-    border-radius: 1rem;
-}
-
-footer {
-    background-color: burlywood;
-    text-align: center;
-    margin: 1rem;
+    width: auto;
+    height: auto;
+    margin: 1em;
+    border-radius: 1em;
 }
