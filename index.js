@@ -8,14 +8,6 @@ async function getAddress() {
     const response = await fetch("http://ip.jsontest.com/");
     const response2 = await fetch("http://headers.jsontest.com/");
 
-    // Promise.all([
-    //     fetch('http://ip.jsontest.com/').then(resp => resp.json()),
-    //     fetch('http://headers.jsontest.com/').then(resp => resp.json()),
-    //     fetch('http://date.jsontest.com').then(resp => resp.json()),
-    //     fetch('http://validate.jsontest.com/?json={"key":"value"}').then(resp => resp.json()),
-    //     fetch('http://md5.jsontest.com/?text=example_text').then(resp => resp.json()),
-    // ]).then(console.log);
-
     if (response.ok === false) {
         console.log("Fetch ERROR");
         return null;
@@ -23,12 +15,48 @@ async function getAddress() {
     const data = await response.json();
     const data2 = await response2.json();
 
-    await display(JSON.stringify(data), JSON.stringify(data2));
+    await display((data.ip), JSON.stringify(data2));
     console.log(data, data2);
 
 }
 
-getAddress();
+async function getDateTime() {
+    const response = await fetch("http://date.jsontest.com");
+    if (response.ok === false) {
+        console.log("Fetch ERROR");
+        return null;
+    }
+    const data = await response.json();
+    console.log(data);
+    try {
+        dateAndTime.innerHTML += `${data.date}${data.time}`;
+    } catch (error) {
+        console.log("ERROR display");
+        return null;
+    }
+}
+
+async function getValid() {
+    const text = {"key":"value"};
+    const response = await fetch(`http://validate.jsontest.com/?json=${text}`);
+    if (response.ok === false) {
+        console.log("Fetch ERROR");
+        return null;
+    }
+    const data = await response.json();
+    console.log(data);
+}
+
+async function getMd5() {
+    const text = "example text";
+    const response = await fetch(`http://md5.jsontest.com/?text=${text}`);
+    if (response.ok === false) {
+        console.log("Fetch ERROR");
+        return null;
+    }
+    const data = await response.json();
+    console.log(data);
+}
 
 async function display(data, data2) {
     try {
@@ -40,3 +68,6 @@ async function display(data, data2) {
         return null;
     }
 }
+
+getAddress();
+getDateTime();
