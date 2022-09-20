@@ -14,9 +14,12 @@ async function apiAddress() {
     const data = await response.json();
     try {
         let output = "";
-        for (const property in data) {
-            output += `<p><b>${property}:</b> ${data[property]}</p>`;
-        }
+        // convert data into array of keys, return data enumerable properties
+        const keys = Object.keys(data);
+        // iterate over keys, add values into output
+        keys.forEach((key) => {
+            output += `<p><b>${key}:</b> ${data[key]}</p>`;
+        })
 
         address.innerHTML = output;
     } catch (error) {
@@ -37,9 +40,12 @@ async function httpHeaders() {
     const data = await response.json();
     try {
         let output = "";
-        for (const property in data) {
-            output += `<p><b>${property}:</b> ${data[property]}</p>`;
-        }
+        // convert data into array of keys, return data enumerable properties
+        const keys = Object.keys(data);
+        // iterate over keys, add values into output
+        keys.forEach((key) => {
+            output += `<p><b>${key}:</b> ${data[key]}</p>`;
+        })
 
         headers.innerHTML = output;
     } catch (error) {
@@ -60,9 +66,12 @@ async function dateTime() {
     const data = await response.json();
     try {
         let output = "";
-        for (const property in data) {
-            output += `<p><b>${property}:</b> ${data[property]}</p>`;
-        }
+        // convert data into array of keys, return data enumerable properties
+        const keys = Object.keys(data);
+        // iterate over keys, add values into output
+        keys.forEach((key) => {
+            output += `<p><b>${key}:</b> ${data[key]}</p>`;
+        })
 
         dateAndTime.innerHTML = output;
     } catch (error) {
@@ -84,9 +93,12 @@ async function checkValid() {
     const data = await response.json();
     try {
         let output = "";
-        for (const property in data) {
-            output += `<p><b>${property}:</b> ${data[property]}</p>`;
-        }
+        // convert data into array of keys, return data enumerable properties
+        const keys = Object.keys(data);
+        // iterate over keys, add values into output
+        keys.forEach((key) => {
+            output += `<p><b>${key}:</b> ${data[key]}</p>`;
+        })
 
         jsonCheck.innerHTML = output;
     } catch (error) {
@@ -108,9 +120,12 @@ async function calcMd5() {
     const data = await response.json();
     try {
         let output = "";
-        for (const property in data) {
-            output += `<p><b>${property}:</b> ${data[property]}</p>`;
-        }
+        // convert data into array of keys, return data enumerable properties
+        const keys = Object.keys(data);
+        // iterate over keys, add values into output
+        keys.forEach((key) => {
+            output += `<p><b>${key}:</b> ${data[key]}</p>`;
+        })
 
         md5Calc.innerHTML = output;
     } catch (error) {
